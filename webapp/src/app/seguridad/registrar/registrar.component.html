@@ -1,0 +1,86 @@
+<section>
+  <form
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    #f="ngForm"
+    (ngSubmit)="registrarUsuario(f)"
+    fxLayoutGap="10px"
+  >
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Ingrese Nombre</mat-label>
+    <input
+      type="text"
+      matInput
+      placeholder="Ingrese Nombre"
+      ngModel
+      name="name"
+      required
+    />
+    <mat-error>Debe ingresar un nombre</mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Ingrese Apellidos</mat-label>
+    <input
+      type="text"
+      matInput
+      placeholder="Ingrese los Apellidos"
+      ngModel
+      name="surname"
+      required
+    />
+    <mat-error>Debe ingresar los Apellidos</mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Ingrese el Usuario</mat-label>
+    <input
+      type="text"
+      matInput
+      placeholder="Username"
+      ngModel
+      name="username"
+      required
+    />
+    <mat-error>Debe ingresar un Usuario</mat-error>
+  </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Ingrese el Email</mat-label>
+      <input
+        type="email"
+        matInput
+        placeholder="usuario@dominio.com"
+        ngModel
+        name="email"
+        email
+        required
+        #emailInput="ngModel"
+      />
+      <mat-error *ngIf="emailInput.hasError('required')"
+        >El email no puede estar en blanco</mat-error
+      >
+      <mat-error *ngIf="!emailInput.hasError('required')"
+        >El email es invalido</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field
+      class="example-full-width"
+      appearance="fill"
+      hintLabel="El password debe tener minimo 6 caracteres"
+    >
+      <mat-label>Ingrese el Password</mat-label>
+      <input
+        type="password"
+        matInput
+        placeholder="password"
+        ngModel
+        name="password"
+        required
+        minlength="6"
+      />
+      <mat-error>El password debe tener mas de 6 caracteres</mat-error>
+    </mat-form-field>
+
+    <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Guardar</button>
+  </form>
+</section>
